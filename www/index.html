@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/dropbox.js/0.10.2/dropbox.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <style>
+.grid-item {
+  width: 25%;
+  height: auto;
+  float: left;
+  display:inline;
+  padding:2px;
+}
+.container {
+  width: 100%;
+}
+    </style>
+</head>
+
+<body ng-app="starter">
+
+    <ion-pane ng-controller="MainController">
+        <ion-header-bar class="bar-assertive">
+            <h1 class="title" ng-cloak>Albumlocker &amp; Dropbox | Connected: {{connected}}</h1>
+        </ion-header-bar>
+        <ion-content has-header="true" padding="true" scroll="true" overflow-scroll="true">
+            <div class="container">
+                <div on-tap="viewAlbum()" ng-repeat="item in photos track by item.guid" class="grid-item">
+                    <img style="width:100%" ng-src="{{item.thumb}}">
+                </div>
+            </div>
+        </ion-content>
+        <div class="bar bar-footer">
+            <div class="button-bar">
+                <a on-tap="addRandomPhoto()" class="button">+ Random photo</a>
+                <a on-tap="viewAlbum()" ng-disabled="photos.length==0" class="button">View album</a>
+                <a on-tap="save()" ng-disabled="photos.length==0" class="button">Save album</a>
+            </div>
+        </div>
+    </ion-pane>
+
+    <script id="album.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <h1 class="title">Your Album</h1>
+            </ion-header-bar>
+            <ion-content has-header="true" padding="true" scroll="true" overflow-scroll="true">
+                <div ng-repeat="item in photos track by item.guid" on-tap="showFullSize(item)" class="grid-item">
+                    <img style="width:100%" ng-src="{{item.loadedThumb}}">
+                </div>
+            </ion-content>
+            <div class="bar bar-footer">
+                <div class="button-bar">
+                    <a on-tap="albumModal.hide()" class="button button-positive">Close</a>
+                </div>
+            </div>
+        </ion-modal-view>
+    </script>
+
+    <script id="full-size.html" type="text/ng-template">
+        <ion-modal-view>
+            <ion-header-bar>
+                <h1 class="title" ng-show="size">{{item.oWidth}}x{{item.oHeight}} | {{size}} bytes</h1>
+            </ion-header-bar>
+            <ion-content has-header="true" padding="true" scroll="true" overflow-scroll="true">
+                <div>
+                    <img style="width:100%" ng-src="{{url}}">
+                </div>
+                <input style="width:100%; text-align:center" type="text" value="{{item.guid}}">
+            </ion-content>
+            <div class="bar bar-footer">
+                <div class="button-bar">
+                    <a on-tap="fullSizeModal.hide()" class="button button-energized">Close</a>
+                </div>
+            </div>
+        </ion-modal-view>
+    </script>
+</body>
+</html>
