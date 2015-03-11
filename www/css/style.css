@@ -18,3 +18,8 @@
   right: 0;
   width: 100%;
 }
+
+.grid-item img:hover {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}

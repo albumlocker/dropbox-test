@@ -35,9 +35,8 @@
         </ion-content>
         <div class="bar bar-footer">
             <div class="button-bar">
-                <a on-tap="addRandomPhoto()" class="button">+ Random photo</a>
-                <a on-tap="viewAlbum()" ng-disabled="photos.length==0" class="button">View album</a>
-                <a on-tap="save()" ng-disabled="photos.length==0" class="button">Save album</a>
+                <a on-tap="addRandomPhoto()" ng-disabled="!connected" class="button">+ Random photo</a>
+                <a on-tap="save()" ng-disabled="!connected || photos.length==0" class="button">Save album</a>
             </div>
         </div>
     </ion-pane>
