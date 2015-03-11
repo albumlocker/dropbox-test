@@ -1,1 +1,11 @@
-/* Empty. Add your own CSS if you like */
+.grid-item {
+  width: 25%;
+  height: auto;
+  float: left;
+  display: inline;
+  padding: 2px;
+  line-height: 0px;
+}
+.container {
+  width: 100%;
+}
