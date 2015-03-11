@@ -24,7 +24,6 @@ angular.module('starter', ['ionic'])
 .controller('MainController', [ '$scope', '$state', '$q', '$ionicModal', '$ionicLoading', '$timeout', function($scope, $state, $q, $ionicModal, $ionicLoading, $timeout) {
 
     $scope.photos = localStorage.album ? JSON.parse(localStorage.album) : [];
-    $scope.connected = 'NO';
 
     globals.client = new Dropbox.Client({
         key: "feye6tfc5en2kww"

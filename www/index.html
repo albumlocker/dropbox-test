@@ -24,7 +24,7 @@
 
     <ion-pane ng-controller="MainController">
         <ion-header-bar class="bar-assertive">
-            <h1 class="title" ng-cloak>Albumlocker &amp; Dropbox | Connected: {{connected}}</h1>
+            <h1 class="title" ng-cloak>Albumlocker &amp; Dropbox | {{connected ? connected : 'Connecting...'}}</h1>
         </ion-header-bar>
         <ion-content has-header="true" padding="true" scroll="true" overflow-scroll="true">
             <div class="container">
