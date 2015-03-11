@@ -47,7 +47,7 @@ angular.module('starter', ['ionic'])
             }
 
             $timeout(function() {
-                $scope.connected = 'YES';
+                $scope.connected = accountInfo.name;
             });
 
             console.log(accountInfo);
